@@ -1,4 +1,4 @@
-module xiaoy.io/something
+module github.com/abrance/something
 
 go 1.19
 
