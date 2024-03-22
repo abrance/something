@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/abrance/something/pkg/client_go"
 	"github.com/abrance/something/pkg/gen_host"
 	"log"
 )
 
 func main() {
-	caseGenHost()
+	client_go.Connect()
 }
 
 func caseGenHost() {
