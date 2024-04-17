@@ -39,8 +39,10 @@ func main() {
 	// 创建并配置 TLS 凭证
 	serverTLSConfig := &tls.Config{
 		Certificates: []tls.Certificate{serverCert},
-		ClientAuth:   tls.RequireAndVerifyClientCert, // 要求并验证客户端证书
-		ClientCAs:    caCertPool,
+		//ClientAuth:   tls.RequireAndVerifyClientCert,
+		//ClientAuth:   tls.NoClientCert,
+		ClientAuth: tls.VerifyClientCertIfGiven,
+		ClientCAs:  caCertPool,
 	}
 
 	// 增强 TLS 配置的安全性
