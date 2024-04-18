@@ -46,7 +46,7 @@ func main() {
 	}
 
 	// 增强 TLS 配置的安全性
-	serverTLSConfig.BuildNameToCertificate()
+	//serverTLSConfig.BuildNameToCertificate()
 
 	// 使用 TLS 凭证创建 gRPC 服务器选项
 	creds := credentials.NewTLS(serverTLSConfig)

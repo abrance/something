@@ -52,9 +52,19 @@ func BuildServerTlsConfig(ServerCert, ServerKey, CACert string) credentials.Tran
 	caCertPool := x509.NewCertPool()
 	caCertPool.AppendCertsFromPEM(caCert)
 
+	DefaultTLSCipherSuites := []uint16{
+		tls.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+		tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+		tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+		tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+		tls.TLS_RSA_WITH_AES_128_GCM_SHA256,
+		tls.TLS_RSA_WITH_AES_256_GCM_SHA384,
+	}
 	// 创建并配置 TLS 凭证
 	serverTLSConfig := &tls.Config{
+		MinVersion:   tls.VersionTLS12,
 		Certificates: []tls.Certificate{serverCert},
+		CipherSuites: DefaultTLSCipherSuites,
 		//ClientAuth:   tls.RequireAndVerifyClientCert,
 		//ClientAuth:   tls.NoClientCert,
 		ClientAuth: tls.VerifyClientCertIfGiven,
