@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/abrance/something/pkg/gz"
+	"github.com/abrance/something/pkg/conn"
 
 	//"github.com/abrance/something/pkg/client_go"
 	"github.com/abrance/something/pkg/gen_host"
@@ -12,11 +12,12 @@ import (
 func main() {
 	// client_go.Connect()
 	//caseGenHost()
-	fn, err := gz.ReadFileInGzip("./test.tar.gz", "test/test.txt")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(string(fn))
+	//fn, err := gz.ReadFileInGzip("./test.tar.gz", "test/test.txt")
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
+	//fmt.Println(string(fn))
+	conn.EpollCase()
 }
 
 func caseGenHost() {
