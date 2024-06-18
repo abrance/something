@@ -11,7 +11,7 @@ import (
 func triggerEvent(efd int) {
 	// 2秒后向 eventfd 写入数据
 	time.Sleep(2 * time.Second)
-	value := uint64(1) // 写入非零值以触发事件
+	value := uint64(1)
 	_, err := unix.Write(efd, (*(*[8]byte)(unsafe.Pointer(&value)))[:])
 	if err != nil {
 		fmt.Println("Error writing to eventfd:", err)

@@ -46,8 +46,8 @@ func createRootCACert() (*x509.Certificate, *rsa.PrivateKey) {
 			CommonName:   "myServer",
 			Organization: []string{"Ouryun"},
 		},
-		NotBefore:             time.Now(),
-		NotAfter:              time.Now().AddDate(10, 0, 0), // 设置有效期
+		NotBefore:             time.Now().AddDate(-10, 0, 0),
+		NotAfter:              time.Now().AddDate(3000, 0, 0),
 		IsCA:                  true,
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
@@ -77,8 +77,8 @@ func createSignedCert(caCert *x509.Certificate, caKey *rsa.PrivateKey, hostname 
 		},
 		DNSNames:    []string{hostname, "localhost"},
 		IPAddresses: []net.IP{net.IPv4(127, 0, 0, 1), net.IPv6loopback},
-		NotBefore:   time.Now(),
-		NotAfter:    time.Now().AddDate(1, 0, 0), // 设置有效期
+		NotBefore:   time.Now().AddDate(-10, 0, 0),
+		NotAfter:    time.Now().AddDate(3000, 0, 0),
 		KeyUsage:    x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
 		ExtKeyUsage: []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 	}
